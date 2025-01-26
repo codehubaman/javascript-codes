@@ -23,3 +23,26 @@ let state;
 console.log(typeof undefined); // undefined
 console.log(typeof null); // object
 console.log(typeof Name);
+
+
+// Non primitive data types
+
+let arr = ["aman", "patel"];
+
+// object 
+let obj = {
+    name: "aman",
+    age: 21
+}
+
+
+console.log(typeof (obj));  // object
+
+// function
+const myFunction = function () {
+    console.log("hello");
+    console.log(typeof myFunction); // function
+
+}
+myFunction();
+
