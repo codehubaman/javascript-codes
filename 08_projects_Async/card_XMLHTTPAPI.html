@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .card button {
+            background-color: #4a76a4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>My Cart</h2>
+        <img id="user-photo" src="" alt="User Photo">
+        <p id="follower-count"></p>
+        <button id="submit-btn">Submit</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Create an object to store the data
+        const userData = {
+            photo: '',
+            followers: 0,
+            message: ''
+        };
+
+        // Make an API call using XMLHttpRequest
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.github.com/users/codehubaman', true);
+
+        xhr.onreadystatechange = function () {
+            console.log(xhr);
+            if (xhr.readyState === 4) {
+                console.log(xhr.responseText);
+                const data = JSON.parse(xhr.responseText);
+
+                // Update the object with API data
+                userData.photo = data.avatar_url;
+                userData.followers = data.followers;
+
+                // Display the data in the card
+                document.getElementById('user-photo').src = userData.photo;
+                document.getElementById('follower-count').textContent = `Followers: ${userData.followers}`;
+            } else if (xhr.status != 200) {
+                console.error('Error fetching data:', xhr.statusText);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Request failed');
+        };
+
+        xhr.send();
+
+        // Add event listener to the submit button
+        const submitBtn = document.getElementById('submit-btn');
+        const messageDiv = document.getElementById('message');
+
+        submitBtn.addEventListener('click', () => {
+            userData.message = 'Wow! Wonderful';
+            messageDiv.textContent = userData.message;
+        });
+    </script>
+
+</body>
+
+</html>

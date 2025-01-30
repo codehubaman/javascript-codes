@@ -3,7 +3,7 @@ const coding = ["js", "css", "html", "python", "java"];
 coding.forEach((item, index, coding) => {
 
     console.log(`${index + 1} :  ${item}`);
-});
+})
 
 
 // for each loop take function as callback

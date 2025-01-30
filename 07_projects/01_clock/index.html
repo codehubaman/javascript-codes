@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
+            font-family: Arial, sans-serif;
+        }
+
+        .time span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            /* Ensures "Clock" is on its own line */
+        }
+
+        .currtime {
+            font-size: 3rem;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #00ffcc;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body style=background-color:black>
+    <div class="time">
+        <span style=color:white>Clock</span>
+    </div>
+    <div class="currtime"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
